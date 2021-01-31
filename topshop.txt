@@ -1,0 +1,942 @@
+/**
+ Computer Applications Project
+ 2016-2017
+ Ira Zibbu
+ Roll No. - 13
+ 
+ */
+
+import java.io.*;
+public class COMPUTERPROJECT
+ {
+    //data members
+    double amount; //stores total cost of items
+    double discount; //stores discount
+    double finalamount; //stores final price
+    String name; //stores user's name
+    String address; //stores delivery address
+    String phone; //stores phone number
+    String paymethod; //stores payment method
+    String item[ ] = new String [20]; //stores list of items bought
+    String size[ ] = new String [20]; //stores the sizes of clothes bought
+    String colour[ ] = new String [20]; //stores the colours of clothes bought
+    double price[ ] = new double [20]; //stores individual clothes' prices
+    int times; //counter
+    int srdeleteitem; //stores sr. no. of item to be deleted
+    double pricedeleteitem; //stores price of deleted item
+    final double TAXRATE; //stores tax rate
+    int count; //counter
+    
+    //constructor to initialize data members
+    public COMPUTERPROJECT( )
+    {
+        amount = 0.0D;
+        discount = 0.0D;
+        finalamount = 0.0D;
+        name = null;
+        address = null;
+        phone = null;
+        paymethod = null;
+        times = 0;
+        TAXRATE = 0.1d;
+        srdeleteitem = 0;
+        pricedeleteitem = 0.0;
+        count = 1;
+    }
+     // method to print the welcome page
+    public static void printWelcomePage ( ) throws IOException
+    {
+        //loop for top border
+        for (int i = 0; i < 62; i++)
+            System.out.print('x');
+        System.out.println ("x                                                             x" );
+        System.out.println ("x                                                             x" );
+        System.out.println ("x                   6TH SUBJECT PROJECT                       x");
+        System.out.println ("x                  COMPUTER APPLICATIONS                      x ");
+        System.out.println ("x             GREENWOOD HIGH SCHOOL, BANGALORE                x");
+        System.out.println ("x                ACADEMIC YEAR 2016-2017                      x");
+        System.out.println ("x                 ONLINE SHOPPING CART                        x");
+        for (int i = 0; i < 6; i++)
+            System.out.println ("x                                                             x");
+         System.out.println     ("x" + "    NAME: IRA ZIBBU                                          x");
+        System.out.println      ("x" + "    CLASS: 10 A                                              x");
+        System.out.println      ("x" + "    ROLL NO.: 13                                             x");
+        System.out.println      ("x                                                             x" );
+        System.out.println      ("x                                                             x" );
+        //loop for bottom border
+        for (int i = 0; i < 62; i++)
+            System.out.print('x');
+        System.out.println ( );
+        BufferedReader br = new BufferedReader ( new InputStreamReader (System.in));
+        System.out.println ("PRESS ENTER TO BEGIN");
+        char temp = (char) br.read ( );
+        
+        
+    }
+    
+    
+    
+
+   public static void main ( ) throws IOException
+    
+    {
+        //exception handling
+        try
+       {
+        //creating an object
+        COMPUTERPROJECT obj = new COMPUTERPROJECT ( ) ;
+        int subscript = 0;
+        int choice1 = 0, choice2 = 0, choice3 = 0, choice4 = 0, choice5 = 0;
+        int c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, c8 = 0, c9 = 0, c10 = 0, c12 = 0, c11 = 0;
+        int phonenumcount = 0;
+        
+        boolean flag = true;
+        printWelcomePage ( ); //calling function to print welcome page
+        System.out.println ( "\t" + " Welcome to All Star Clothing Store!");
+        System.out.println ( );
+        //getting user's name
+        System.out.println( "\t" + " Please enter your name: ");
+        BufferedReader br = new BufferedReader ( new InputStreamReader (System.in));
+        obj.name = br.readLine ( );
+        //displaying discount offers
+        System.out.println ("    Today's special offer!");
+        System.out.println( );
+        System.out.println ("Shop for more than Rs. 3000 and get 5% off.");
+        System.out.println ("Shop for more than Rs. 4500 and get 10% off.");
+        System.out.println ("Shop for more than Rs. 6000 and get 15% off.");
+        System.out.println( );
+        System.out.println ("Press enter to begin shopping");
+        String a = br.readLine ( );
+        System.out.println ( );
+        System.out.println ( );
+        System.out.println ( );
+        
+    //loop to print the shop menu
+     do 
+        {
+         
+        System.out.println ("Please choose from the following: ");
+        System.out.println ( );
+        //menu to choose category
+        System.out.println ("Enter 1 for Men's clothing section.");
+        System.out.println ("Enter 2 for Women's clothing section.");
+        System.out.println ("Enter 3 for Kids's clothing section.");
+        choice1 = Integer.parseInt (br.readLine ( ) );
+        System.out.println ( );
+        System.out.println ( );
+        
+         switch (choice1)
+        {
+            case 1:  
+                 
+                 System.out.println ("Welcome to the Men's section" );
+                 System.out.println ( );
+                 System.out.println ("Please choose from the following: ");
+                 System.out.println ( );
+                 //menu to chose item of clothing
+                 System.out.println ("1. Trousers: Rs. 900");
+                 System.out.println ("2. Shirts: Rs. 250");
+                 System.out.println ("3. Ties: Rs. 200");
+                 System.out.println ("4. Jackets: Rs. 1000");
+                 choice2 = Integer.parseInt (br.readLine ( ) );
+                 System.out.println ( );
+                 
+                 switch (choice2)
+                 {
+                     case 1:
+                     //to see if item is in stock
+                     if (c1 <= 4)
+                      {
+                         obj.item[subscript] = "trousers";
+                         obj.price[subscript] = 900.00D;
+                         c1++;
+                        }
+                      //to see if item is in stock
+                     if (c1 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                           
+                        }
+                                break;
+                     case 2:
+                      //to see if item is in stock
+                     if (c2 <= 4)
+                     {
+                     obj.item[subscript] = "shirt";
+                     obj.price[subscript] = 250.0D;
+                     c2++;
+                    }
+                     //to see if item is in stock
+                    if (c2 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                        continue;
+                        
+                           
+                        }
+                        
+                    
+                             break;
+                     case 3:
+                      //to see if item is in stock
+                     if (c3 <= 4)
+                     {
+                     obj.item[subscript] = "ties";
+                     obj.price[subscript] = 200.00D;
+                     c3++;
+                    }
+                     //to see if item is in stock
+                   if (c3 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                        continue;
+                        
+                           
+                        }
+                        
+                                break;
+                     case 4:
+                      //to see if item is in stock
+                    if (c4 <= 4)
+                    {
+                     obj.item[subscript] = "jacket";
+                     obj.price[subscript] = 1000.00D;
+                     c4++;
+                    }
+                     //to see if item is in stock
+                    if (c4 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                         
+                           
+                        }
+                        
+                    
+                                break;
+                     default:
+                     {
+                         System.out.println ("Invalid choice");
+                         continue;
+                         
+                           
+                    }
+                    }
+                 System.out.println ( );
+                 System.out.println ("Please choose a size:");
+                 System.out.println ( );
+                 //menu to choose size
+                 System.out.println ("1. Small (S)");
+                 System.out.println ("2. Medium (M) ");
+                 System.out.println ("3. Large (L) ");
+                 System.out.println ("4. Extra Large (XL) ");
+                 choice3 = Integer.parseInt (br.readLine ( ));
+                 System.out.println ( );
+                 switch (choice3)
+                 {
+                     case 1:
+                    obj.size[subscript] = "S";
+                        break;
+                     case 2:
+                    obj.size[subscript] = "M";
+                        break;
+                     case 3:
+                    obj.size[subscript] = "L";
+                        break;
+                     case 4:
+                     obj.size[subscript] = "XL";
+                        break;
+                     default:
+                    {
+                        System.out.println("Invalid choice!");
+                     continue;
+                     
+                           
+                    }
+        
+               }
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ("Please choose a colour:");
+                 System.out.println ( );
+                 //menu to chose colour
+                 System.out.println ("1. Black");
+                 System.out.println ("2. White ");
+                 System.out.println ("3. Brown ");
+                 System.out.println ("4. Blue ");
+                 choice4 = Integer.parseInt (br.readLine ( ));
+                 switch (choice4)
+                 {
+                     case 1:
+                     obj.colour[subscript] = "Black";
+                        break;
+                     case 2:
+                     obj.colour[subscript] = "White";
+                        break;
+                     case 3:
+                     obj.colour[subscript] = "Brown";
+                        break;
+                     case 4:
+                     obj.colour[subscript] = "Blue";
+                        break;
+                     default:
+                     {
+                         System.out.println ("Invalid choice");
+                         continue;
+                         
+                           
+                    }
+                }
+                 System.out.println ( );
+                 System.out.println ( );
+                 //option to shop or bill
+                 outer: //label
+                 do
+                 {
+                     System.out.println("If you would like to continue shopping, press 1");
+                 System.out.println("If you would to proceed to billing press 2");
+                 choice5 = Integer.parseInt (br.readLine ( ) );
+                 switch (choice5)
+                 {
+                 case 1:
+                 flag = true;
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break outer;
+                 case 2:
+                    flag = false;
+                    
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break outer;
+                 default :
+                 {
+                     System.out.println ("invalid choice!");
+                     continue;
+                    }
+                }
+                }
+                while (choice5 != 1 || choice5 != 2);
+                                                break;
+                                                
+             case 2:
+                 System.out.println("Welcome to the women's section");
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ("Please choose from the following: ");
+                 System.out.println ( );
+                 //menu to choose items of clothing
+                 System.out.println ("1. Skirts: Rs. 500");
+                 System.out.println ("2. T-shirts: Rs. 250");
+                 System.out.println ("3. Jeans: Rs. 1000");
+                 System.out.println ("4. Jackets: Rs. 1000");
+                 choice2 = Integer.parseInt (br.readLine ( ) );
+                 System.out.println ( );
+                 switch (choice2)
+                 {
+                     case 1:
+                      //to see if item is in stock
+                     if ( c5 <= 4)
+                     {
+                     obj.item[subscript] = "skirt";
+                     obj.price[subscript] = 500.00D;
+                     c5++;
+                    }
+                     //to see if item is in stock
+                    if (c5 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                         
+                           
+                        }
+                        
+                                break;
+                     case 2:
+                      //to see if item is in stock
+                     if (c6 <= 4)
+                     {
+                         
+                     obj.item[subscript] = "t-shirt";
+                     obj.price[subscript] = 250.0D;
+                     c6++;
+                    }
+                     //to see if item is in stock
+                    if (c6 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                         
+                           
+                        }
+                        
+                     
+                                break;
+                     case 3:
+                      //to see if item is in stock
+                     if (c7 <=4 )
+                     {
+                     obj.item[subscript] = "jeans";
+                     obj.price[subscript] = 1000.00D;
+                     c7++;
+                    }
+                     //to see if item is in stock
+                    if (c7 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                     
+                                break;
+                     case 4:
+                      //to see if item is in stock
+                     if (c8 <=4 )
+                     {
+                     obj.item[subscript] = "jacket";
+                     obj.price[subscript] = 1000.00D;
+                     c8++;
+                    }
+                     //to see if item is in stock
+                    if (c8 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                     
+                                break;
+                     default:
+                       {
+                         System.out.println ("Invalid choice");
+                         continue;
+                        }
+                    }
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ("Please choose a size:");
+                 System.out.println ( );
+                 //menu to choose size
+                 System.out.println ("1. Small (S)");
+                 System.out.println ("2. Medium (M) ");
+                 System.out.println ("3. Large (L) ");
+                 System.out.println ("4. Extra Large (XL) ");
+                 choice3 = Integer.parseInt (br.readLine( ) );
+                 System.out.println ( );
+                 
+                 switch (choice3)
+                 {
+                     case 1:
+                     obj.size[subscript] = "S";
+                        break;
+                     case 2:
+                     obj.size[subscript] = "M";
+                        break;
+                     case 3:
+                     obj.size[subscript] = "L";
+                        break;
+                     case 4:
+                     obj.size[subscript] = "XL";
+                        break;
+                     default:
+                     {
+                         System.out.println("Invalid choice!");
+                         continue;
+                    }
+        
+               }
+                 System.out.println ( );
+                 System.out.println ("Please choose a colour:");
+                 System.out.println ( );
+                 //menu for colour
+                 System.out.println ("1. Red ");
+                 System.out.println ("2. White ");
+                 System.out.println ("3. Brown ");
+                 System.out.println ("4. Blue ");
+                 choice4 = Integer.parseInt (br.readLine( ) );
+                 System.out.println ( );
+                 switch (choice4)
+                 {
+                     case 1:
+                     obj.colour[subscript] = "Red";
+                        break;
+                     case 2:
+                     obj.colour[subscript] = "White";
+                        break;
+                     case 3:
+                     obj.colour[subscript] = "Brown";
+                        break;
+                     case 4:
+                    obj.colour[subscript] = "Blue";
+                        break;
+                     default:
+                     {
+                         System.out.println ("Invalid choice");
+                         continue;
+                    }
+                }
+                 System.out.println ( );
+                 System.out.println ( );
+                 //option to shop or bill
+                 inner:
+                        do
+                 {
+                 System.out.println("If you would like to continue shopping, press 1");
+                 System.out.println("If you would to proceed to billing press 2");
+                 choice5 = Integer.parseInt (br.readLine ( ) );
+                 switch (choice5)
+                 {
+                 case 1:
+                 flag = true;
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break inner;
+                 case 2:
+                    flag = false;
+                    
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break inner;
+                 default :
+                 {
+                     System.out.println ("invalid choice!");
+                     continue;
+                    }
+                }
+                }
+                while (choice5 != 1 || choice5 != 2);
+                                                break;
+            case 3:
+                 System.out.println("Welcome to the kid's section");
+                 System.out.println ( );
+                 System.out.println ("Please choose from the following: ");
+                 System.out.println ( );
+                 //menu to choose item
+                 System.out.println ("1. Shirts: Rs. 150");
+                 System.out.println ("2. Shorts: Rs. 200");
+                 System.out.println ("3. Skirts: Rs. 600");
+                 System.out.println ("4. Sweaters: Rs. 1000");
+                 choice2 = Integer.parseInt (br.readLine( ) );
+                 System.out.println ( );
+                 System.out.println ( );
+                 switch (choice2)
+                 {
+                     case 1:
+                      //to see if item is in stock
+                     if (c9 <= 4)
+                     {
+                     obj.item[subscript] = "shirt";
+                     obj.price[subscript] = 150.00D;
+                     c9++;
+                    }
+                     //to see if item is in stock
+                    if (c9 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                        
+                     
+                                break;
+                     case 2:
+                      //to see if item is in stock
+                     if (c10 <= 4)
+                     {
+                     obj.item[subscript] = "shorts";
+                     obj.price[subscript] = 200.0D;
+                     c10++;
+                    }
+                     //to see if item is in stock
+                    if (c10 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                        
+                     
+                                break;
+                     case 3:
+                      //to see if item is in stock
+                     if (c11 <=4 )
+                     {
+                     obj.item[subscript] = "skirts";
+                     obj.price[subscript] = 600.00D;
+                     c11++;
+                    }
+                     //to see if item is in stock
+                    if (c11 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                     
+                                break;
+                     case 4:
+                      //to see if item is in stock
+                     if (c12 <= 4)
+                     {
+                     obj.item[subscript] = "sweater";
+                     obj.price[subscript] = 1000.00D;
+                     c12++;
+                    }
+                     //to see if item is in stock
+                    if (c12 > 4)
+                     {
+                         System.out.println ("Item out of stock");
+                         continue;
+                        }
+                    
+                                break;
+                     default:
+                     {
+                         System.out.println ("Invalid choice");
+                         continue;
+                        }
+                    }
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ("Please choose a size:");
+                 System.out.println ( );
+                 //menu to choose size
+                 System.out.println ("1. Small (S)");
+                 System.out.println ("2. Medium (M) ");
+                 System.out.println ("3. Large (L) ");
+                 System.out.println ("4. Extra Large (XL) ");
+                 choice3 = Integer.parseInt (br.readLine ( ) );
+                 System.out.println ( );
+                 switch (choice3)
+                 {
+                     case 1:
+                     obj.size[subscript] = "S";
+                        break;
+                     case 2:
+                     obj.size[subscript] = "M";
+                        break;
+                     case 3:
+                     obj.size[subscript] = "L";
+                        break;
+                     case 4:
+                     obj.size[subscript] = "XL";
+                        break;
+                     default:
+                     {
+                         System.out.println("Invalid choice!");
+                     continue;
+                    }
+        
+               }
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ("Please choose a colour:");
+                 System.out.println ( );
+                 //menu to choose colour
+                 System.out.println ("1. Red");
+                 System.out.println ("2. Green ");
+                 System.out.println ("3. Yellow ");
+                 System.out.println ("4. Blue ");
+                 choice4 = Integer.parseInt (br.readLine ( ));
+                 System.out.println ( );
+                 switch (choice4)
+                 {
+                     case 1:
+                     obj.colour[subscript] = "Red";
+                        break;
+                     case 2:
+                     obj.colour[subscript] = "Green";
+                        break;
+                     case 3:
+                     obj.colour[subscript] = "Yellow";
+                        break;
+                     case 4:
+                     obj.colour[subscript] = "Blue";
+                        break;
+                     default:
+                     {
+                         System.out.println ("Invalid choice");
+                         continue;
+                    }
+                }
+                 System.out.println ( );
+                 System.out.println ( );
+                 //option to bill or shop
+                 loop:
+                       do
+                 {
+                 System.out.println("If you would like to continue shopping, press 1");
+                 System.out.println("If you would to proceed to billing press 2");
+                 choice5 = Integer.parseInt (br.readLine ( ) );
+                 switch (choice5)
+                 {
+                 case 1:
+                 flag = true;
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break loop;
+                 case 2:
+                    flag = false;
+                    
+                 subscript++;
+                 obj.times++;
+                 System.out.println ( );
+                 System.out.println ( );
+                 System.out.println ( );
+                    break loop;
+                 default :
+                 {
+                     System.out.println ("invalid choice!");
+                     continue;
+                    }
+                }
+                }
+                while (choice5 != 1 || choice5 != 2);
+                                                break;
+             default:
+             { 
+                 System.out.println ("Invalid choice!");
+                 continue;    
+            }
+        }
+    }
+     while (flag == true);
+    //billing page
+    System.out.println ( );
+    System.out.println ( );
+    System.out.println ( );
+    System.out.println ("\t" + "Welcome to Billing" );
+    //obtaning phone number
+    System.out.println ("Please enter your contact number" );
+    obj.phone = br.readLine ( );
+    //checking to see if phone number is valid
+    for (;obj.phone.length ( ) < 10;)
+    {   System.out.println ("Invalid Number");
+        System.out.println ("Please enter your contact number" );
+        obj.phone = br.readLine ( );
+    }
+        
+        
+         
+    
+     //obtaining delivery adresss   
+    System.out.println ( );
+    System.out.println ("Please enter delivery address" );
+    obj.address = br.readLine ( );
+    System.out.println ( );
+    //choosing payment option
+    System.out.println ("Please choose a payment option.");
+    System.out.println ( );
+    System.out.println ("Enter 1 for Credit Card");
+    System.out.println ("Enter 2 for Cash on Delivery");
+    int pay = Integer.parseInt (br.readLine () );
+    System.out.println ( );
+     looper:
+   do
+    switch (pay)
+        {
+            case 1:
+            obj.paymethod = "Credit card";
+            System.out.println ("Enter Credit Card Number");
+            String cardno = br.readLine ( );
+           
+    
+                break looper;
+            case 2:
+            obj.paymethod = "Cash on Delivery";
+                break looper;
+            default :
+            {
+                System.out.println ("Invalid choice!");
+                continue;
+            }
+        }
+    
+    while (pay != 1 || pay != 2);
+       
+    
+    
+    //loop to calculate price
+    for (int i = 0; i < 20; i++)
+           obj.amount += obj.price[i];
+    double disc = obj.calculateDiscount ( );
+    obj.printBillNormal ( ); //calling method to print bill
+    System.out.println ( );
+    System.out.println ( );
+    outer1:
+    do
+    {
+    //option to exit shop or delete an item
+    System.out.println ();
+    System.out.println ("If you are satisfied with your service and would like to exit, press 1");
+    System.out.println ("If you would like to delete an item from your cart, press 2");
+    int choicemisc = Integer.parseInt (br.readLine ( ));
+    switch (choicemisc)
+    {
+        case 1:
+        System.out.println ("EXIT SHOP");
+            break outer1;
+        case 2:
+            //deleting an item
+            System.out.println ("Please choose the sr.no. of the item you wish to delete");
+            obj.srdeleteitem = Integer.parseInt (br.readLine( ) );
+            int x = 0;
+            obj.pricedeleteitem = obj.price[obj.srdeleteitem-1];
+            
+            System.out.println ("New Bill");
+            //deleting the item
+            for (x = obj.srdeleteitem-1; x < obj.times ; x++)
+            {
+            obj.item[x] = obj.item[x+1];
+            obj.price[x] = obj.price[x+1];
+            obj.size[x] = obj.size[x+1];
+            obj.colour[x] = obj.colour[x+1];
+          }
+          obj.amount = 0.0;
+          for (int i = 0; i < 20; i++)
+           obj.amount += obj.price[i];
+          
+           disc = obj.calculateDiscount ( ); //computing bill
+          obj.PrintBillDeletedItems ( ); //printing bill
+          obj.count++;
+            
+            continue;
+        
+         default:
+         {
+                 System.out.println("incorrect choice");
+             continue;
+            }
+            
+      }
+     }
+     while (1>0);
+    }
+   
+   catch (Exception e)
+   {
+       System.out.println (e); //exceptions
+    }
+ }
+ //method to calculate discount, tax and final price
+ public double calculateDiscount ( )
+    {
+        
+        if (amount < 3000)
+            discount = 0.0D;
+        if (amount >= 3000 && amount < 4500)
+            discount = amount*0.05;
+        if (amount >= 4500 && amount < 6000)
+            discount = amount*0.1;
+        if (amount >= 6000)
+            discount = amount*0.15;
+        finalamount = amount - discount;
+        return discount;
+    }
+    
+    //method to print bill
+    public void printBillNormal ( )
+    {
+       System.out.println ( );
+        System.out.println ( );
+        System.out.println ( );
+        for (int i = 0; i < 50; i++)
+            System.out.print ('x');
+        System.out.println ( );
+        System.out.println ( );
+        System.out.println ("\t" + "          INVOICE ");
+         System.out.println ("\t" + " ALL STAR CLOTHING STORE");
+         System.out.println ("Customer name: " + name);
+        System.out.println ("Customer contact number: " + phone);
+        System.out.println ("Delivery Address " + address);
+        System.out.println ("Payment method: " + paymethod);
+        System.out.println ( );
+        System.out.println ( );
+        System.out.println ("ITEM NO." + "\t" + "ITEM NAME" + "\t" + "SIZE" + "\t" + "      COLOUR" + "\t" + "\t" + "PRICE (IN RS.) ");
+    
+       
+   
+        //loop to print list of items bought
+        for (int j = 0; j < times; j++)
+        {
+            System.out.print(j+1);
+            System.out.print ("\t" + "\t"  + item[j]);
+            System.out.print("\t" + "\t" + size[j]);
+            System.out.print("\t" + "\t" + colour[j]);
+            System.out.print("\t" + "\t" + price[j]);
+            System.out.println ( );
+            
+        }
+    
+        
+    
+         System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "TOTAL: " + amount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "DISCOUNT: " + discount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "DISCOUNTED PRICE: " + finalamount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "TAX APPLICABLE: " + TAXRATE*finalamount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "FINAL TOTAL: " + (finalamount + (TAXRATE*finalamount)));
+        System.out.println ( );
+        System.out.println ("       !!!!!THANK YOU FOR SHOPPING!!!!!! ");
+        for (int n = 0; n < 50; n++)
+            System.out.print ('x');
+    }
+    public void PrintBillDeletedItems ( )
+    {
+         System.out.println ( );
+        System.out.println ( );
+        System.out.println ( );
+        for (int i = 0; i < 50; i++)
+            System.out.print ('x');
+        System.out.println ( );
+        System.out.println ( );
+        System.out.println ("\t" + "          INVOICE ");
+         System.out.println ("\t" + " ALL STAR CLOTHING STORE");
+         System.out.println ("Customer name: " + name);
+        System.out.println ("Customer contact number: " + phone);
+        System.out.println ("Delivery Address " + address);
+        System.out.println ("Payment method: " + paymethod);
+        System.out.println ( );
+        System.out.println ( );
+        System.out.println ("ITEM NO." + "\t" + "ITEM NAME" + "\t" + "SIZE" + "\t" + "      COLOUR" + "\t" + "\t" + "PRICE (IN RS.) ");
+    
+       
+   
+        //loop to print list of items bought
+        for (int j = 0; j < times - count; j++)
+        {
+            
+         
+            {System.out.print(j+1);
+            System.out.print ("\t" + "\t"  + item[j]);
+            System.out.print("\t" + "\t" + size[j]);
+            System.out.print("\t" + "\t" + colour[j]);
+            System.out.print("\t" + "\t" + price[j]);
+            System.out.println ( );
+        }
+            
+        }
+    
+        
+    
+         System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "TOTAL: " + amount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "DISCOUNT: " + discount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "DISCOUNTED PRICE: " + finalamount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "TAX APPLICABLE: " + TAXRATE*finalamount);
+        System.out.println ("\t" + "\t" + "\t" + "\t" + "\t" + "FINAL TOTAL: " + (finalamount + (TAXRATE*finalamount)));
+        System.out.println ( );
+        System.out.println ("       !!!!!THANK YOU FOR SHOPPING!!!!!! ");
+        for (int n = 0; n < 50; n++)
+            System.out.print ('x');
+    }
+  }
